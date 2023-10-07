@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>URL Shortener</title>
+  </head>
+  <body>
+    <h1>URL Shortener</h1>
+
+    <% if (locals.error) { %>
+    <p class="error"><%= error %></p>
+    <% } %>
+
+    <form action="/" method="post">
+      <input type="url" name="url" id="url" placeholder="Paste Your URL..." />
+      <input type="submit" value="Create URL" />
+    </form>
+
+    <div class="short-url">
+      <% if (locals.short_url) { %>
+      <a href="<%= short_url %>" id="shortUrl"><%= short_url %> </a>
+      <% } %>
+    </div>
+
+    <script>
+      // Add an event listener to the short URL element
+      const shortUrlElement = document.getElementById("shortUrl");
+      if (shortUrlElement) {
+        shortUrlElement.addEventListener("click", () => {
+          // Create a temporary input element to copy the URL
+          const tempInput = document.createElement("input");
+          tempInput.value = shortUrlElement.href;
+          document.body.appendChild(tempInput);
+
+          // Select and copy the URL to the clipboard
+          tempInput.select();
+          document.execCommand("copy");
+
+          // Remove the temporary input element
+          document.body.removeChild(tempInput);
+
+          // Alert the user that the URL has been copied
+          alert("Short URL copied to clipboard: " + shortUrlElement.href);
+        });
+      }
+    </script>
+
+
+
+<footer>© 2023 
+
+  Made By Suyash Kamath, Atharv Deshmukh and Aryan Gandhi </footer>
+  </body>
+</html>
