@@ -1,28 +1,54 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>URL Shortener</title>
-  </head>
-  <body>
-    <h1>URL Shortener</h1>
 
-    <% if (locals.error) { %>
-    <p class="error"><%= error %></p>
-    <% } %>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-    <form action="/" method="post">
-      <input type="url" name="url" id="url" placeholder="Paste Your URL..." />
-      <input type="submit" value="Create URL" />
-    </form>
+<body>
+    <div class="outer-box">
+        <div class="inner-box">
+            <header class="header">
+              <h1>URL Shortener</h1>
 
-    <div class="short-url">
-      <% if (locals.short_url) { %>
-      <a href="<%= short_url %>" id="shortUrl"><%= short_url %> </a>
-      <% } %>
+              <% if (locals.error) { %>
+              <p class="error"><%= error %></p>
+              <% } %>
+
+            </header>
+            <br><br><br>
+            <main class="form">
+              <form class="form1" action="/" method="post">
+                <input type="url" name="url" id="url" placeholder="Paste Your URL..." />
+                <br><br>
+                <input type="submit" value="Create URL" />
+              </form>
+            </main>
+
+            <div class="short-url">
+              <% if (locals.short_url) { %>
+              <a href="<%= short_url %>" id="shortUrl"><%= short_url %> </a>
+              <% } %>
+            </div>
+
+            <br><br><br>
+
+            <footer class="footer">
+               
+<footer>© 2023 
+
+  Made By Suyash Kamath with ❤️</footer>
+            </footer>
+        </div>
+
+        <div class="circle c1"></div>
+        <div class="circle c2"></div>
     </div>
+
 
     <script>
       // Add an event listener to the short URL element
@@ -46,11 +72,6 @@
         });
       }
     </script>
+</body>
 
-
-
-<footer>© 2023 
-
-  Made By Suyash Kamath, Atharv Deshmukh and Aryan Gandhi </footer>
-  </body>
 </html>
